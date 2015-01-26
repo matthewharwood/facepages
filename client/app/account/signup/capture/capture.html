@@ -1,1 +1,30 @@
-<input type="file" accept="image/*;capture=camera">
+<section class="hero-unit-b" id="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <ul class="list-unstyled row">
+          <li class="col-lg-12"><img src="http://lorempixel.com/g/200/200/" alt=""></li>
+          <li class="col-lg-12"><img src="http://lorempixel.com/g/200/200/" alt=""></li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-12">
+            <input type="file" accept="image/*;capture=camera">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <ul class="list-unstyled row">
+          <li class="col-lg-12 countdown-capture" ng-repeat="count in counter">
+            <h3 class="countdown-type">{{count}}</h3>
+          </li>
+          
+          <li class="col-lg-12">
+            <button type="submit" class="btn btn-primary fill"><i class="icon-camera icon-white"></i>capture</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

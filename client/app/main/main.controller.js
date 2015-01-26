@@ -20,7 +20,7 @@ angular.module('facepagesApp')
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
     };
-    $scope.counter = [1,2,3];
+    
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
