@@ -1,0 +1,22 @@
+
+
+<ul ng-repeat="user in users">
+  <p>{{user.name}}</p>
+  <li ng-repeat="img in user.imgs">
+    <img ng-src="{{img}}">
+  </li>
+
+</ul>
+
+<form ng-submit="createUser()">
+  <input type="text" ng-model="name" name="name" />
+  <input type="text" ng-model="bio" name="bio" />
+  <button type="submit">Submit</button>
+</form>
+
+<h2>{{name}}</h2>
+<p>{{bio}}</p>
+<video id="video"></video>
+<button id="button" ng-click="captureImage()">GET</button>
+<div id="canvasHolder"></div>
+<div id="imageToForm"></div>
