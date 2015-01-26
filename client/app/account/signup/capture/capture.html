@@ -1,4 +1,4 @@
-<section class="hero-unit-b" id="banner">
+<!-- <section class="hero-unit-b" id="banner">
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
@@ -9,8 +9,9 @@
       </div>
       <div class="col-lg-6">
         <div class="row">
-          <div class="col-lg-12">
-            <input type="file" accept="image/*;capture=camera">
+          <div class="col-lg-12 capture-frame">
+            <video id="video"></video>
+            <canvas id="canvas" ng-show="false"></canvas>
           </div>
         </div>
       </div>
@@ -26,5 +27,64 @@
         </ul>
       </div>
     </div>
+  </div>
+</section> -->
+<!-- <section class="hero-unit-b" >
+  <div class="container-snapshot">
+    <div class="captured-wrapper">
+        <ul class="capture-list list-unstyled">
+
+          <li class="capture-list-item">
+            <img src="http://lorempixel.com/g/200/200/" alt="">
+          </li>
+
+          <li class="capture-list-item">
+            <img src="http://lorempixel.com/g/200/200/" alt="">
+          </li>
+
+        </ul>
+    </div>
+    <div class="capturing-wrapper">
+        <ul class="capture-list list-unstyled">
+          <li>
+            <video id="video"></video>
+            <canvas id="canvas" ng-show="false"></canvas>
+          </li>
+        </ul>
+    </div>
+    <div class="captured-wrapper">
+        <ul class="capture-list list-unstyled">
+          <li class="col-lg-12 countdown-capture" ng-repeat="count in counter">
+            <h3 class="countdown-type">{{count}}</h3>
+          </li>
+          <li>
+            <button type="submit" class="btn btn-primary fill"><i class="icon-camera icon-white"></i>capture</button>
+          </li>
+        </ul>
+    </div>
+  </div>
+</section> -->
+<section class="hero-unit-b" ng-style="set.captureHeight">
+  <div class="inner-capture" id="box" >
+      <div class="col-left">
+        <ul class="capture-list list-unstyled">
+          <li class="capture-list-item">1</li>
+          <li class="capture-list-item">2</li>
+        </ul>
+
+      </div>
+      <div class="col-mid">
+          <video id="video" ng-style="set.captureHeight"></video>
+          <canvas id="canvas" ng-show="false"></canvas>
+      </div>
+      <div class="col-right">
+        
+        <ul class="capture-list list-unstyled">
+          <li class="capture-list-item">1</li>
+          <li class="capture-list-item">2</li>
+          <li class="capture-list-item">3</li>
+          <li class="capture-list-item">capture</li>
+        </ul>
+      </div>
   </div>
 </section>
