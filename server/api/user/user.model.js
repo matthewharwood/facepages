@@ -19,8 +19,8 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   github: {},
-  skills: [String],
-  imgs: [String],
+  skills: [],
+  imgs: [],
   bio: String
 });
 

@@ -6,7 +6,7 @@
 
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
+var bodyParser = require('body-parser');
 var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
@@ -20,10 +20,15 @@ if(config.seedDB) { require('./config/seed'); }
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
+
 var socketio = require('socket.io')(server, {
   serveClient: (config.env === 'production') ? false : true,
   path: '/socket.io-client'
 });
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 require('./config/socketio')(socketio);
 require('./config/express')(app);
 require('./routes')(app);
