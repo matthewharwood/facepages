@@ -10,17 +10,8 @@ angular.module('facepagesApp')
       })
       .state('signup', {
         url: '/signup',
-        // views: {
-        //   '': {
-        //     templateUrl: 'app/account/signup/signup.html',
-        //     controller: 'SignupCtrl',
-        //   },
-        //   'login@signup': {
-        //     templateUrl: 'app/account/login/login.html',
-        //     controller: 'LoginCtrl'
-        //   }
-
-        // }
+        templateUrl: 'app/account/signup/signup.html',
+        controller: 'SignupCtrl'
       })
       .state('settings', {
         url: '/settings',
