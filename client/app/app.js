@@ -11,8 +11,9 @@ angular.module('facepagesApp', [
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
-
+      .otherwise('/signup');
+    $urlRouterProvider
+      .when('/', '/signup');
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
