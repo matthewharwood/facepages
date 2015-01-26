@@ -1,0 +1,69 @@
+//extension for position 100%;
+.fill {
+  position: relative;
+  height: 100%;
+}
+
+.temp-fixed {
+  position: fixed;
+  background: rbga(200,200,200,0.35);
+  top:0;
+  left: 0;
+  color: #555;
+  z-index: 99999;
+}
+
+
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em
+}
+
+
+//ul,ol,li helpers
+@mixin list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-unstyled {
+  margin: 0;
+  @include list-unstyled;
+}
+//ul,ol,li helpers
+//
+
+
+//overflow helpers
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stack {
+    @extend .group;
+    float: left;  
+}
+//overflow helpers
+//
+
+//centers vertically and horizontally
+.center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//centering helpers
+.center-parent {
+  position: relative;
+}
+
+.center-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}

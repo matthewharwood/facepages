@@ -1,0 +1,26 @@
+* { 
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  position: relative;
+  vertical-align: middle;
+}
+
+// @font-face {
+//     font-family: 'tabacg1-bolduploaded_file';
+//     src: url('../assets/fonts/tabacg1-bold-webfont.eot');
+//     src: url('../assets/fonts/tabacg1-bold-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('../assets/fonts/tabacg1-bold-webfont.woff2') format('woff2'),
+//          url('../assets/fonts/tabacg1-bold-webfont.woff') format('woff'),
+//          url('../assets/fonts/tabacg1-bold-webfont.ttf') format('truetype');
+//     font-weight: normal;
+//     font-style: normal;
+
+// }
+html, body{
+    // @extend .fill;
+    // font-family: "tabacg1-bolduploaded_file";
+    // font-size: 42px;
+    // color: #555;
+}
