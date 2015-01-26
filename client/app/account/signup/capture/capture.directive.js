@@ -3,7 +3,7 @@
 angular.module('facepagesApp')
   .directive('capture', function () {
     return {
-      templateUrl: 'app/main/capture/capture.html',
+      templateUrl: 'app/account/signup/capture/capture.html',
       restrict: 'EA',
       link: function (scope, element, attrs) {
       }

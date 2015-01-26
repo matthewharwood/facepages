@@ -1,0 +1,46 @@
+.thing-form {
+    margin: 20px 0;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit-a {
+    position: relative;
+    padding: 30px 15px;
+    color: #333;
+    text-align: left;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #e5e5e5;
+}
+
+.hero-unit-b {
+    position: relative;
+    padding: 30px 15px;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #c1c0c0;
+}
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
+
+// matts adds
+
+.countdown-capture {
+    text-align: center;
+}
+.countdown-type {
+    font-size: em(54);
+}

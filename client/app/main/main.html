@@ -1,45 +1,9 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<header class="hero-unit-a" id="banner">
-  <div class="container">
-    <h3>Welcome to AKQA</h3>
-    <p>Sign up to see all what AKQA has to offer</p>
-  </div>
-</header>
-<section class="hero-unit-b" id="banner">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3">
-        <ul class="list-unstyled row">
-          <li class="col-lg-12"><img src="http://lorempixel.com/g/200/200/" alt=""></li>
-          <li class="col-lg-12"><img src="http://lorempixel.com/g/200/200/" alt=""></li>
-        </ul>
-      </div>
-      <div class="col-lg-6">
-        <div class="row">
-          <div class="col-lg-12">
-            <img src="http://lorempixel.com/g/400/400/" alt="">
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <ul class="list-unstyled row">
-          <li class="col-lg-12 countdown-capture" ng-repeat="count in counter">
-            <h3 class="countdown-type">{{count}}</h3>
-          </li>
-          
-          <li class="col-lg-12">
-            <button type="submit" class="btn btn-primary fill"><i class="icon-camera icon-white"></i>capture</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
+      <h1 class="page-header">Face Page:</h1>
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
         <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
       </ul>
