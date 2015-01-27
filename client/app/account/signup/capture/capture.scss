@@ -38,6 +38,8 @@ capture {
     margin: 0 auto;
     height: 100%;
 }
+
+//common layer styles
 .col-mid {
   flex: 2;
   // background: yellow;
@@ -48,25 +50,7 @@ capture {
     width: auto;
   }
 }
-.current-picture-stamp {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  color: #fff;
-  z-index: 10;
-  &.empty{
-    color: $gray; 
-  }
-  h3{
-    font-size: 5rem;
-  }
-  span{
-    position: absolute;
-    bottom: 12px;
-    left: 45px;
-    font-size: 1rem;
-  }
-}
+
 .col-left, .col-right {
     flex: 1;
     // background: blue;
@@ -80,6 +64,52 @@ capture {
     }
     
 }
+
+//ui layer
+.current-picture-editor {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  color: #fff;
+  z-index: 10;
+  font-size: 16px;
+  .glyphicon-asterisk{
+    color: $gray;
+    line-height: 0;
+    font-size: 24px;
+  }
+  .glyphicon-remove{
+    color: $red;
+    line-height: 0;
+    font-size: 24px;
+  }
+  .glyphicon-ok {
+    color: $ready;
+    line-height: 0;
+    font-size: 24px;
+  }
+}
+.current-picture-stamp {
+  position: absolute;
+  bottom: 0px;
+  left: 24px;
+  color: #fff;
+  z-index: 10;
+  &.empty{
+    color: $gray; 
+  }
+  h3{
+    font-size: 5rem;
+  }
+  span{
+    position: absolute;
+    bottom: 12px;
+    left: 48px;
+    font-size: 1rem;
+  }
+}
+
+//individual layers
 .col-right {
   flex: 1;
   .capture-list-item{
@@ -100,7 +130,7 @@ capture {
       &:nth-child(3){
         border-bottom: none;
         &.active {
-          background: rgba(0,200,0, 0.8);
+          background: $ready;
           border-bottom: none;
         }
       }

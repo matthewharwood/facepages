@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('facepagesApp')
-  .directive('capture', function ($interval, $timeout) {
+  .directive('capture', function ($interval, $timeout, $window) {
     return {
       templateUrl: 'app/account/signup/capture/capture.html',
       restrict: 'EA',
