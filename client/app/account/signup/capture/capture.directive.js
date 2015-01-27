@@ -25,8 +25,8 @@ angular.module('facepagesApp')
         navigator.getUserMedia({audio: true, video: true},
         function(pLocalMediaStream){
              /*
-              * создаём элемент Video,
-              * в который помещаем картинку с веб-камеры\
+              * create an element of Video,
+              *                which put the picture with a webcam
               */
              var lVideo = $("#video");
 
@@ -35,14 +35,14 @@ angular.module('facepagesApp')
              lVideo[0].autoplay = true;
              lVideo[0].src = URL.createObjectURL(pLocalMediaStream);
         },
-        function(pError) { /* если возникла ошибка - выводим её */
-             alert(pError);
+        function(pError) { /* if an error occurs - derive its */
+             console.log(pError)
         });
 
-        var counted = 0;
+        $scope.counted = 0;
         $scope.callAtInterval = function() {
-          $scope.countdown[counted].power = true;
-          counted++;
+          $scope.countdown[$scope.counted].power = true;
+          $scope.counted++;
         }
         
       },
@@ -73,7 +73,9 @@ angular.module('facepagesApp')
             console.log(scope.images);
             for(var i = 0; i < scope.countdown.length; i++){
               scope.countdown[i].power = false;
+              scope.counted--;
             }
+
           },4000);
           
           
