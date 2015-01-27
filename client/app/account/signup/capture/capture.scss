@@ -26,55 +26,185 @@ capture {
   padding: 16px 16px;
   color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: #c1c0c0;
+  background: $gray;
 }
 
 
 
 .inner-capture{
-    background: red;
+    // background: red;
     display: flex;
     width: 80%;
     margin: 0 auto;
     height: 100%;
 }
 
-.col-left, .col-right {
-    flex: 1;
-    background: blue;
-    height: 100%;
-    .capture-list {
-      display: flex;
-      width: 100%;
-      flex-flow: column;
-      height: 100%;
-    }
-    .capture-list-item{
-      height: 100%;
-      background: green;
-      @extend .center-flex;
-      font-size: 6rem;
-      &:last-child{
-        font-weight: 100;
-        font-size: 3rem;
-        cursor: pointer;
-      }
-    }
-}
-
+//common layer styles
 .col-mid {
   flex: 2;
-  background: yellow;
+  // background: yellow;
   overflow: hidden;
-
+  border: 1px solid #888;
   video {
     @extend .center-child;
     width: auto;
   }
 }
 
-.col-right {
-     flex: 1;
-    background: pink;
+.col-left, .col-right {
+    flex: 1;
+    // background: blue;
+    height: 100%;
+
+    .capture-list {
+      display: flex;
+      width: 100%;
+      flex-flow: column;
+      height: 100%;
+    }
+    
 }
+
+//ui layer
+.current-picture-editor {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  color: #fff;
+  z-index: 10;
+  font-size: 16px;
+  .glyphicon-asterisk{
+    color: $gray;
+    line-height: 0;
+    font-size: 24px;
+  }
+  .glyphicon-remove{
+    color: $red;
+    line-height: 0;
+    font-size: 24px;
+  }
+  .glyphicon-ok {
+    color: $ready;
+    line-height: 0;
+    font-size: 24px;
+  }
+}
+.current-picture-stamp {
+  position: absolute;
+  bottom: 0px;
+  left: 24px;
+  color: #fff;
+  z-index: 10;
+  &.empty{
+    color: $gray; 
+  }
+  h3{
+    font-size: 5rem;
+  }
+  span{
+    position: absolute;
+    bottom: 12px;
+    left: 48px;
+    font-size: 1rem;
+  }
+}
+
+//individual layers
+.col-right {
+  flex: 1;
+  .capture-list-item{
+      @extend .center-flex;
+      font-size: 6rem;
+      height: 100%;
+      overflow: hidden;
+      margin: 0px 0px 8px 8px;
+      border-bottom: solid 1px #888;
+      &:nth-child(1).active {
+        background: rgba(0,200,0, 0.5);
+      }
+
+      &:nth-child(2).active {
+        background: rgba(0,200,0, 0.65);
+      }
+
+      &:nth-child(3){
+        border-bottom: none;
+        &.active {
+          background: $ready;
+          border-bottom: none;
+        }
+      }
+
+      &:nth-child(4) {
+        background: $red;
+        &:after{
+          content: '';
+          position: absolute;
+          bottom: 0;
+          background-color:darken( $red, 16% );
+          height: 5px;
+          width: 100%;
+          left:0;
+        }
+      }
+
+      img, canvas {
+        @extend .center-child;
+      }
+      &:last-child{
+        margin: 0px 0px 0px 8px;
+        font-weight: 100;
+        font-size: 3rem;
+        cursor: pointer;
+      }
+    }
+
+}
+.col-left {
+  .capture-list-item{
+      @extend .center-flex;
+      font-size: 6rem;
+      height: 100%;
+      // background: green;
+      overflow: hidden;
+      margin: 0px 8px 8px 0;
+      border-bottom: solid 1px $off-gray;
+      
+      &:before {
+        content: " ";
+        position: absolute;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        width: 100%;
+        height: 100%;
+        background: $white;
+      }
+      &:last-child{
+        margin: 0px 8px 0px 0;
+        font-weight: 100;
+        font-size: 3rem;
+        cursor: pointer;
+      }
+      canvas {
+        @extend .center-child;
+        z-index: 10;
+      }
+    }
+
+}
+.capture-list-item-button{
+  display: flex;
+  flex-flow: column;
+  .capture-button-icon{
+    @extend .center-flex;
+  }
+  .capture-button-icon{
+    @extend .center-flex;
+  }
+  
+}
+
+
 
