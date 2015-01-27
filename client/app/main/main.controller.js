@@ -2,11 +2,11 @@
 
 angular.module('facepagesApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
+    $scope.users = [];
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
+    $http.get('/api/users').success(function(users) {
+      $scope.users = users;
+      socket.syncUpdates('users', $scope.users);
     });
 
     $scope.addThing = function() {
@@ -20,7 +20,7 @@ angular.module('facepagesApp')
     $scope.deleteThing = function(thing) {
       $http.delete('/api/things/' + thing._id);
     };
-    
+
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });

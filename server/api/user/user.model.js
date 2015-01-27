@@ -20,7 +20,8 @@ var UserSchema = new Schema({
   google: {},
   github: {},
   skills: [],
-  imgs: [],
+  imgA: String,
+  imgB: String,
   bio: String
 });
 

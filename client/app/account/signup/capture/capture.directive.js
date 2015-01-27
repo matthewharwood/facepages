@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('facepagesApp')
-  .directive('capture', function ($timeout) {
+  .directive('capture', function ($timeout, Auth, $http) {
     return {
       templateUrl: 'app/account/signup/capture/capture.html',
       restrict: 'EA',
@@ -41,24 +41,31 @@ angular.module('facepagesApp')
       },
       link: function (scope, element, attrs) {
 
-        scope.images = [];
-        scope.takePic = function(){
-          var li = document.createElement('li');
-          var canvas = document.createElement('canvas');
-          canvas.id = 'hiddenCanvas';
-
-          document.body.appendChild(canvas);
-
-          $('#canvasHolder').append(li).addClass('capture-list-item').append(canvas);
-
-
+        var user = Auth.getCurrentUser();
+        var counter = 0;
+        scope.takePic = function(id){
+          if (typeof id !== 'undefined') {
+            scope.selected = id;
+          } else {
+            scope.selected = counter % 2 == 0 ? "imgA" : "imgB";
+          }
+          counter++;
+          var canvas = document.getElementById(id || scope.selected);
           var ctx = canvas.getContext('2d');
           canvas.width = video.videoWidth/2;
           canvas.height = video.videoHeight/2;
           ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          var data = {};
+          data[scope.selected] = canvas.toDataURL();
 
-          scope.images.push(canvas.toDataURL());
-          console.log(scope.images);
+
+          $http.patch('api/users/me', data).success(function(resp){
+            console.log(resp);
+          })
+
+          //scope.images.push(canvas.toDataURL());
+
+
         };
       }
     };

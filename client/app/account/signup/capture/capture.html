@@ -4,20 +4,20 @@
       <div class="col-left">
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item">
-            <canvas id="canvasa"></canvas>
+            <canvas id="imgA" ng-click="takePic('imgA')"></canvas>
           </li>
           <li class="capture-list-item">
-            <canvas id="canvasb"></canvas>
+            <canvas id="imgB" ng-click="takePic('imgB')"></canvas>
           </li>
         </ul>
 
       </div>
       <div class="col-mid">
           <video id="video" ng-style="set.captureHeight"></video>
-          
+
       </div>
       <div class="col-right">
-        
+
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item">1</li>
           <li class="capture-list-item">2</li>
