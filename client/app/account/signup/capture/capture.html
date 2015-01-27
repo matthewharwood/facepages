@@ -37,7 +37,7 @@
       <div class="col-mid">
           <video id="video" ng-style="set.captureHeight"></video>
           <div class="current-picture-stamp">
-            <h3>A <span>front picture</span></h3>
+            <h3>{{selected[selected.length-1]}} <span>{{label}}</span></h3>
 
           </div>
       </div>
@@ -45,12 +45,12 @@
       <div class="col-right">
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item" ng-repeat="count in countdown" ng-class="{'active': count.power}">{{count.val}}</li>
-          <li class="capture-list-item" ng-click="takePic()">
+          <li class="capture-list-item" ng-click="takePic(undefined, $event); ">
             <ul class="capture-list-item-button list-unstyled">
               <div class="capture-button-icon">
                 <span class="glyphicon glyphicon-camera"></span>
               </div>
-               <div class="capture-button-text">
+               <div class="capture-button-text" >
                 capture
               </div>
             </ul>
