@@ -97,7 +97,9 @@ exports.me = function(req, res, next) {
 exports.patchMe = function(req, res, next){
   var userId = req.user._id;
   User.findById(userId, function(err, user){
+    user.skills = req.body.skills;
     var updated = _.merge(user, req.body);
+
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, user);
