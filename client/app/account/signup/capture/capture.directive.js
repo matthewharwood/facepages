@@ -29,9 +29,9 @@ angular.module('facepagesApp')
               * в который помещаем картинку с веб-камеры\
               */
              var lVideo = $("#video");
-             
 
-             
+
+
              lVideo[0].autoplay = true;
              lVideo[0].src = URL.createObjectURL(pLocalMediaStream);
         },
@@ -40,8 +40,25 @@ angular.module('facepagesApp')
         });
       },
       link: function (scope, element, attrs) {
+
+        scope.images = [];
         scope.takePic = function(){
-          console.log('heyhey');
+          var li = document.createElement('li');
+          var canvas = document.createElement('canvas');
+          canvas.id = 'hiddenCanvas';
+
+          document.body.appendChild(canvas);
+
+          $('#canvasHolder').append(li).addClass('capture-list-item').append(canvas);
+
+
+          var ctx = canvas.getContext('2d');
+          canvas.width = video.videoWidth/2;
+          canvas.height = video.videoHeight/2;
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+          scope.images.push(canvas.toDataURL());
+          console.log(scope.images);
         };
       }
     };
