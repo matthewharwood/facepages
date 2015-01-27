@@ -24,7 +24,7 @@ angular.module('facepagesApp')
         navigator.msGetUserMedia;
 
         window.URL = window.URL || window.webkitURL;
-        navigator.getUserMedia({audio: true, video: true},
+        navigator.getUserMedia({audio: false, video: true},
           function (pLocalMediaStream) {
             /*
              * create an element of Video,
@@ -52,18 +52,30 @@ angular.module('facepagesApp')
         $http.get('/api/users/me').success(function (user) {
           scope.user = user;
         });
-        var counter = 0;
-        scope.takePic = function (id) {
+        scope.selected = "imgA";
+        scope.label = "front image";
+        scope.setLabels = function(evt){
+          if (evt){
+            if (scope.selected == "imgA"){
+              console.log('change to imgB');
+              scope.selected = "imgB";
+              scope.label = "back image";
+            } else{
+              scope.selected = "imgA";
+              scope.label = "front image";
+            }
+          }
+        };
+
+
+        scope.takePic = function (id, $event) {
 
           $interval(scope.callAtInterval, 1000, 3);
           $timeout(function () {
 
             if (typeof id !== 'undefined') {
               scope.selected = id;
-            } else {
-              scope.selected = counter % 2 == 0 ? "imgA" : "imgB";
             }
-            counter++;
             var canvas = document.getElementById(scope.selected);
             var ctx = canvas.getContext('2d');
             canvas.width = video.videoWidth / 2;
@@ -73,6 +85,7 @@ angular.module('facepagesApp')
 
             $http.patch('/api/users/me', scope.user).success(function (user) {
               scope.user = user;
+              scope.setLabels($event)
             });
 
             for (var i = 0; i < scope.countdown.length; i++) {
@@ -81,8 +94,7 @@ angular.module('facepagesApp')
             }
 
           }, 4000);
-
-
+          
         };
       }
     };
