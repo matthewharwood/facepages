@@ -11,7 +11,7 @@ angular.module('facepagesApp')
         $scope.set.captureHeight = {
           height: (($('.inner-capture').width())/2) + 'px'
         };
-        
+
         console.log($scope.set.captureHeight);
         navigator.getUserMedia =    navigator.getUserMedia       ||
                                 /* chrome и safari           */
@@ -40,7 +40,9 @@ angular.module('facepagesApp')
         });
       },
       link: function (scope, element, attrs) {
-
+        scope.takePic = function(){
+          console.log('heyhey');
+        };
       }
     };
   });
