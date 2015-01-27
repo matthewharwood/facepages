@@ -6,6 +6,33 @@
   </div>
 </header>
 <capture></capture>
+<!-- change name -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>user.name</h1>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
+        <div class="form-group" ng-hide="true">
+          <label>USER NAME:</label>
+
+          
+            <input type="text" name="username" class="form-control" ng-model="user.name"
+                   mongoose-error/>
+            <p class="help-block" ng-show="form.name.$error.mongoose">
+                {{ errors.other }}
+            </p>
+         
+        </div>
+        <p class="help-block"> {{ message }} </p>
+        <!-- <button class="btn btn-lg btn-primary" type="submit">Save changes</button> -->
+      </form>
+    </div>
+  </div>
+</div>
+<!-- .end of change name -->
+<!-- change password -->
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -42,4 +69,7 @@
       </form>
     </div>
   </div>
+
 </div>
+<!-- .change password -->
+
