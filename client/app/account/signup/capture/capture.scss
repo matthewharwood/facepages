@@ -32,7 +32,7 @@ capture {
 
 
 .inner-capture{
-    background: red;
+    // background: red;
     display: flex;
     width: 80%;
     margin: 0 auto;
@@ -41,7 +41,7 @@ capture {
 
 .col-left, .col-right {
     flex: 1;
-    background: blue;
+    // background: blue;
     height: 100%;
     .capture-list {
       display: flex;
@@ -49,22 +49,54 @@ capture {
       flex-flow: column;
       height: 100%;
     }
-    .capture-list-item{
-      height: 100%;
-      background: green;
+    
+}
+.col-right {
+  flex: 1;
+  .capture-list-item{
       @extend .center-flex;
       font-size: 6rem;
+      height: 100%;
+      // background: green;
+      overflow: hidden;
+      margin: 0px 0px 8px 8px;
+      border-bottom: solid 1px #888;
+      img, canvas {
+        @extend .center-child;
+      }
       &:last-child{
+        margin: 0px 0px 0px 8px;
         font-weight: 100;
         font-size: 3rem;
         cursor: pointer;
       }
     }
-}
 
+}
+.col-left {
+  .capture-list-item{
+      @extend .center-flex;
+      font-size: 6rem;
+      height: 100%;
+      // background: green;
+      overflow: hidden;
+      margin: 0px 8px 8px 0;
+      border-bottom: solid 1px #888;
+      img, canvas {
+        @extend .center-child;
+      }
+      &:last-child{
+        margin: 0px 8px 0px 0;
+        font-weight: 100;
+        font-size: 3rem;
+        cursor: pointer;
+      }
+    }
+
+}
 .col-mid {
   flex: 2;
-  background: yellow;
+  // background: yellow;
   overflow: hidden;
 
   video {
@@ -73,8 +105,4 @@ capture {
   }
 }
 
-.col-right {
-     flex: 1;
-    background: pink;
-}
 
