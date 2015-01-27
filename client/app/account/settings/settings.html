@@ -59,6 +59,30 @@
     </div>
   </div>
   <!-- .end of change name -->
+  <div class="row">
+    <div class="col-sm-6 user-name"
+         ng-mouseenter="toggleEditIcon('bio', true)"
+         ng-mouseleave="toggleEditIcon('bio', false)"
+         ng-dblclick="toggleInlineEdit('bio', true)">
+      <p class="user-label">BIO:</p>
+
+      <form ng-show="inlineEdit.bio" class="form" name="form" ng-submit="changeBio(user.bio)" novalidate>
+        <div  class="inline-editor">
+          <div class="input-group">
+            <textarea rows="10" columns="10" ng-model="user.bio" mongoose-error></textarea>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit" ng-click="toggleInlineEdit('bio',false)">Go!</button>
+            </span>
+            <p class="help-block" ng-show="form.name.$error.mongoose">
+              {{ errors.other }}
+            </p>
+          </div><!-- /input-group -->
+
+        </div><!-- /.col-lg-6 -->
+      </form>
+      <p ng-hide="inlineEdit.bio">{{currentUser.bio}}</p>
+    </div>
+  </div>
 </div>
 <!-- .end of change profile -->
 

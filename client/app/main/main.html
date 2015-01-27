@@ -5,9 +5,9 @@
     <div class="col-lg-12">
       <h1 class="page-header">Face Page:</h1>
 
-      <img ng-src="{{users[0].imgA}}">
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in users">
 
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="user in users">
+<li><img ng-src="{{user.imgA}}"></li>
         <!--<li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>-->
       </ul>
     </div>

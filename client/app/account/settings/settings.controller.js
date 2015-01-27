@@ -12,10 +12,12 @@ angular.module('facepagesApp')
     $scope.inlineEdit = {
       skills: false,
       name: false,
+      bio: false
     };
     $scope.editglyp = {
       skills: false,
-      name: false
+      name: false,
+      bio: false
     };
     $scope.defaultSkills = 'Double click to add skills';
     $scope.toggleEditIcon = function (type, bool) {
@@ -30,8 +32,14 @@ angular.module('facepagesApp')
     $scope.commaseperator = function (val) {
       $scope.currentUser.skills = val;
     };
+
+    $scope.changeBio = function(bio){
+      $scope.currentUser.bio = bio;
+      $http.patch('/api/users/me', $scope.currentUser).success(function(user){
+        $scope.currentUser = user;
+      });
+    };
     $scope.changeSkills = function () {
-      console.log($scope.currentUser.skills);
       $http.patch('/api/users/me', $scope.currentUser).success(function (user) {
         $scope.currentUser = user;
         console.log(user);
