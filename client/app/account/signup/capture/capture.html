@@ -4,25 +4,55 @@
       <div class="col-left">
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item">
-            <canvas id="imgA" ng-click="takePic('imgA')"></canvas>
+            <canvas ng-hide="true"id="canvasa"></canvas>
+            <div class="current-picture-editor">
+              <span class="glyphicon glyphicon-asterisk"></span>
+              <span   class="glyphicon glyphicon-remove"></span>
+              <span class="glyphicon glyphicon-ok"></span>
+            </div>
+            <div class="current-picture-stamp empty">
+
+              <h3>A <span>front picture</span></h3>
+              
+            </div>
           </li>
           <li class="capture-list-item">
-            <canvas id="imgB" ng-click="takePic('imgB')"></canvas>
+            <canvas ng-hide="true" id="canvasb"></canvas>
+            <div class="current-picture-editor">
+              <span class="glyphicon glyphicon-asterisk"></span>
+              <span class="glyphicon glyphicon-remove"></span>
+              <span class="glyphicon glyphicon-ok"></span>
+            </div>
+            <div class="current-picture-stamp empty">
+              <h3>B <span>back picture</span></h3>
+              
+            </div>   
           </li>
         </ul>
 
       </div>
+
       <div class="col-mid">
           <video id="video" ng-style="set.captureHeight"></video>
+          <div class="current-picture-stamp">
+            <h3>A <span>front picture</span></h3>
 
+          </div>   
       </div>
-      <div class="col-right">
 
+      <div class="col-right"> 
         <ul class="capture-list list-unstyled">
-          <li class="capture-list-item">1</li>
-          <li class="capture-list-item">2</li>
-          <li class="capture-list-item">3</li>
-          <li class="capture-list-item" ng-click="takePic()">capture</li>
+          <li class="capture-list-item" ng-repeat="count in countdown" ng-class="{'active': count.power}">{{count.val}}</li>
+          <li class="capture-list-item" ng-click="takePic()">
+            <ul class="capture-list-item-button list-unstyled">
+              <div class="capture-button-icon">
+                <span class="glyphicon glyphicon-camera"></span>
+              </div>
+               <div class="capture-button-text">
+                capture
+              </div>
+            </ul>
+          </li>
         </ul>
       </div>
   </div>
