@@ -6,26 +6,30 @@
           <li class="capture-list-item">
             <canvas id="imgA" ng-hide="true"></canvas>
             <img ng-src="{{user.imgA}}"/>
-            <div class="current-picture-editor">
-              <span class="glyphicon glyphicon-asterisk"></span>
-              <span   class="glyphicon glyphicon-remove"ng-click="takePic('imgA')"></span>
-              <span class="glyphicon glyphicon-ok"></span>
+            <div class="current-picture-editor" ng-mouseenter="editorHover('imgA',true)" ng-mouseleave="editorHover('imgA', false)">
+              <span class="glyphicon glyphicon-asterisk" 
+                    ng-if="selected === 'imgA'"
+                    ng-class="{'on': user.imgA.length > 0}"></span>
+              <span class="glyphicon glyphicon-camera"ng-click="takePic('imgA')" ng-if="hovered.imgA"></span>
+              <span class="glyphicon glyphicon-ok" ng-if="user.imgA.length > 0 && !hovered.imgA"></span>
             </div>
-            <div class="current-picture-stamp empty">
+            <div class="current-picture-stamp" ng-class="{'on': user.imgA.length > 0}">
 
-              <h3>A <span>front picture</span></h3>
+              <h3 >A <span>front picture</span></h3>
 
             </div>
           </li>
           <li class="capture-list-item">
             <canvas id="imgB" ng-hide="true"></canvas>
             <img class="imgA" ng-src="{{user.imgB}}" />
-            <div class="current-picture-editor">
-              <span class="glyphicon glyphicon-asterisk"></span>
-              <span class="glyphicon glyphicon-remove" ng-click="takePic('imgB')"></span>
-              <span class="glyphicon glyphicon-ok"></span>
+            <div class="current-picture-editor" ng-mouseenter="editorHover('imgB',true)" ng-mouseleave="editorHover('imgB', false)">
+              <span class="glyphicon glyphicon-asterisk" 
+                    ng-if="selected === 'imgB'" 
+                    ng-class="{'on': user.imgB.length > 0}"></span>
+              <span class="glyphicon glyphicon-camera" ng-click="takePic('imgB')" ng-if="hovered.imgB"></span>
+              <span class="glyphicon glyphicon-ok" ng-if="user.imgB.length > 0 && !hovered.imgB"></span>
             </div>
-            <div class="current-picture-stamp empty">
+            <div class="current-picture-stamp" ng-class="{'on': user.imgB.length > 0}">
               <h3>B <span>back picture</span></h3>
 
             </div>
@@ -36,8 +40,8 @@
 
       <div class="col-mid">
           <video id="video" ng-style="set.captureHeight"></video>
-          <div class="current-picture-stamp">
-            <h3>{{selected[selected.length-1]}} <span>{{label}}</span></h3>
+          <div class="current-picture-stamp on">
+            <h3 >{{selected[selected.length-1]}} <span>{{label}}</span></h3>
 
           </div>
       </div>
@@ -45,7 +49,7 @@
       <div class="col-right">
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item" ng-repeat="count in countdown" ng-class="{'active': count.power}">{{count.val}}</li>
-          <li class="capture-list-item" ng-click="takePic(undefined, $event); ">
+          <li class="capture-list-item" ng-click="takePic(undefined, $event); " ng-class="{'disabled': disable}">
             <ul class="capture-list-item-button list-unstyled">
               <div class="capture-button-icon">
                 <span class="glyphicon glyphicon-camera"></span>
@@ -59,3 +63,4 @@
       </div>
   </div>
 </section>
+<div class="flash-shield fadeout" ng-show="flash"></div>
