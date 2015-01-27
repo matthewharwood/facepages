@@ -49,7 +49,7 @@ angular.module('facepagesApp')
       },
       link: function (scope, element, attrs) {
 
-        $http.get('/api/users/me').success(function(user){
+        $http.get('/api/users/me').success(function (user) {
           scope.user = user;
         });
         var counter = 0;
@@ -64,13 +64,16 @@ angular.module('facepagesApp')
               scope.selected = counter % 2 == 0 ? "imgA" : "imgB";
             }
             counter++;
-            var canvas = document.getElementById(id || scope.selected);
+            var canvas = document.getElementById(scope.selected);
             var ctx = canvas.getContext('2d');
             canvas.width = video.videoWidth / 2;
             canvas.height = video.videoHeight / 2;
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            var data = {};
-            data[scope.selected] = canvas.toDataURL();
+            scope.user[scope.selected] = canvas.toDataURL();
+
+            $http.patch('/api/users/me', scope.user).success(function (user) {
+              scope.user = user;
+            });
 
             for (var i = 0; i < scope.countdown.length; i++) {
               scope.countdown[i].power = false;
