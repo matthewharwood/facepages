@@ -4,29 +4,31 @@
       <div class="col-left">
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item">
-            <canvas ng-hide="true"id="canvasa"></canvas>
+            <canvas id="imgA" ng-hide="true"></canvas>
+            <img class="imgA" ng-src="{{user.imgA}}"/>
             <div class="current-picture-editor">
               <span class="glyphicon glyphicon-asterisk"></span>
-              <span   class="glyphicon glyphicon-remove"></span>
+              <span   class="glyphicon glyphicon-remove"ng-click="takePic('imgA')"></span>
               <span class="glyphicon glyphicon-ok"></span>
             </div>
             <div class="current-picture-stamp empty">
 
               <h3>A <span>front picture</span></h3>
-              
+
             </div>
           </li>
           <li class="capture-list-item">
-            <canvas ng-hide="true" id="canvasb"></canvas>
+            <canvas id="imgB" ng-hide="true"></canvas>
+            <img class="imgB" ng-src="{{user.imgB}}" >
             <div class="current-picture-editor">
               <span class="glyphicon glyphicon-asterisk"></span>
-              <span class="glyphicon glyphicon-remove"></span>
+              <span class="glyphicon glyphicon-remove" ng-click="takePic('imgB')"></span>
               <span class="glyphicon glyphicon-ok"></span>
             </div>
             <div class="current-picture-stamp empty">
               <h3>B <span>back picture</span></h3>
-              
-            </div>   
+
+            </div>
           </li>
         </ul>
 
@@ -37,10 +39,10 @@
           <div class="current-picture-stamp">
             <h3>A <span>front picture</span></h3>
 
-          </div>   
+          </div>
       </div>
 
-      <div class="col-right"> 
+      <div class="col-right">
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item" ng-repeat="count in countdown" ng-class="{'active': count.power}">{{count.val}}</li>
           <li class="capture-list-item" ng-click="takePic()">

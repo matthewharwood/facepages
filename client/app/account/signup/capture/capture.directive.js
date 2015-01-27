@@ -49,7 +49,9 @@ angular.module('facepagesApp')
       },
       link: function (scope, element, attrs) {
 
-        var user = Auth.getCurrentUser();
+        $http.get('/api/users/me').success(function(user){
+          scope.user = user;
+        });
         var counter = 0;
         scope.takePic = function (id) {
 
@@ -70,10 +72,6 @@ angular.module('facepagesApp')
             var data = {};
             data[scope.selected] = canvas.toDataURL();
 
-
-            $http.patch('api/users/me', data).success(function (resp) {
-              console.log(resp);
-            });
             for (var i = 0; i < scope.countdown.length; i++) {
               scope.countdown[i].power = false;
               scope.counted--;
