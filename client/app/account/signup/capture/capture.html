@@ -5,7 +5,7 @@
         <ul class="capture-list list-unstyled">
           <li class="capture-list-item">
             <canvas id="imgA" ng-hide="true"></canvas>
-            <img class="imgA" ng-src="{{user.imgA}}"/>
+            <img ng-src="{{user.imgA}}"/>
             <div class="current-picture-editor">
               <span class="glyphicon glyphicon-asterisk"></span>
               <span   class="glyphicon glyphicon-remove"ng-click="takePic('imgA')"></span>
@@ -19,7 +19,7 @@
           </li>
           <li class="capture-list-item">
             <canvas id="imgB" ng-hide="true"></canvas>
-            <img class="imgB" ng-src="{{user.imgB}}" >
+            <img class="imgA" ng-src="{{user.imgB}}" />
             <div class="current-picture-editor">
               <span class="glyphicon glyphicon-asterisk"></span>
               <span class="glyphicon glyphicon-remove" ng-click="takePic('imgB')"></span>
