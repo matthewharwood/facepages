@@ -6,32 +6,64 @@
   </div>
 </header>
 <capture></capture>
+<!-- change profile -->
+<div class="container user-profile">
 <!-- change name -->
-<div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1>user.name</h1>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
-        <div class="form-group" ng-hide="true">
-          <label>USER NAME:</label>
-
-          
-            <input type="text" name="username" class="form-control" ng-model="user.name"
-                   mongoose-error/>
+    <div class="col-sm-6 user-name" 
+         ng-mouseenter="toggleEditIcon('name', true)" 
+         ng-mouseleave="toggleEditIcon('name', false)"
+         ng-dblclick="toggleInlineEdit('name', true)">
+      <p class="user-label">USER NAME:</p>
+      <h3 ng-hide="inlineEdit.name" class="user-value">{{currentUser.name}} <span ng-show="editglyp.name" class="glyphicon glyphicon-edit editor"></span></h3>
+      <form ng-show="inlineEdit.name" class="form" name="form" ng-submit="changeName(form)" novalidate>
+        <div  class="inline-editor">
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="user.name" mongoose-error>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit" ng-click="toggleInlineEdit('name',false)">Go!</button>
+            </span>
             <p class="help-block" ng-show="form.name.$error.mongoose">
                 {{ errors.other }}
             </p>
-         
-        </div>
-        <p class="help-block"> {{ message }} </p>
-        <!-- <button class="btn btn-lg btn-primary" type="submit">Save changes</button> -->
+          </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
       </form>
     </div>
   </div>
+  <!-- change name -->
+  <!-- change skills -->
+  <div class="row bump-36">
+    <div class="col-sm-6 user-skills" 
+         ng-mouseenter="toggleEditIcon('skills', true)" 
+         ng-mouseleave="toggleEditIcon('skills', false)"
+         ng-dblclick="toggleInlineEdit('skills',true)">
+      <p class="user-label">Skill:</p>
+      <h3 ng-hide="inlineEdit.skills" class="user-value">
+        <span ng-show="user.skills.length === 0">{{defaultSkills}}</span>
+        <span ng-hide="user.skills.length === 0" style="background:red; margin-right: 10px; padding: 0 5px;" ng-repeat="skill in user.skills">{{skill}}</span> 
+        <span ng-show="editglyp.skill" class="glyphicon glyphicon-edit editor"></span>
+      </h3>
+      <form ng-show="inlineEdit.skills" class="form fill" name="form" ng-submit="changeSkills(form)" novalidate>
+        <textarea placeholder="add skills seperate with comma" 
+                  ng-model="user.skills" 
+                  ng-change="commaseperator(user.skills.split(','))"
+                  class="fill">
+          
+        </textarea>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" ng-click="toggleInlineEdit('skills',false)">Go!</button>
+        </span>
+      </form>
+    </div>
+  </div>
+  <!-- .end of change name -->
 </div>
-<!-- .end of change name -->
+<!-- .end of change profile -->
+
+
+
+
 <!-- change password -->
 <div class="container">
   <div class="row">

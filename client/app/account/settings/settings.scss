@@ -1,0 +1,73 @@
+.user-profile{
+  
+  .user-name{
+     padding-top: 72px;
+  }
+ 
+  .user-name {
+    cursor: pointer;
+    
+    &:hover {
+      
+      .user-value{
+
+        border-top: none;
+        padding-top:0;
+        top:1px;
+        border-bottom: 1px dashed $off-gray;
+      }
+    }
+    .user-label {
+      color: $off-gray;
+      margin: 0;
+      line-height: 1;
+    }
+    .user-value{
+      border-top: 1px solid #fff;
+      margin: 0;
+      line-height: 1;
+      font-size: 36px;
+      text-transform: capitalize;
+    }
+    .editor {
+      font-size: 16px;
+      top: -2px;
+      color: $ready !important;
+    }
+  }
+  
+}
+.user-skills {
+  cursor: pointer;
+  
+  &:hover {
+    
+    .user-value{
+
+      border-top: none;
+      padding-top:0;
+      top:1px;
+      border-bottom: 1px dashed $off-gray;
+    }
+  }
+  .user-label {
+    color: $off-gray;
+    margin: 0;
+    line-height: 1;
+  }
+  .user-value{
+    border-top: 1px solid #fff;
+    margin: 0;
+    line-height: 1;
+    font-size: 16px;
+    text-transform: capitalize;
+  }
+  .editor {
+    font-size: 16px;
+    top: -2px;
+    color: $ready !important;
+  }
+}
+.inline-editor {
+  height: 37px;
+}
