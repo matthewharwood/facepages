@@ -73,20 +73,27 @@ capture {
   color: #fff;
   z-index: 10;
   font-size: 16px;
+
   .glyphicon-asterisk{
     color: $gray;
     line-height: 0;
     font-size: 24px;
+    &.on {
+      color: #fff;
+    }
+
   }
-  .glyphicon-remove{
+  .glyphicon-camera{
     color: $red;
     line-height: 0;
     font-size: 24px;
+    cursor: pointer;
   }
   .glyphicon-ok {
     color: $ready;
     line-height: 0;
     font-size: 24px;
+    cursor: pointer;
   }
 }
 .current-picture-stamp {
@@ -95,9 +102,13 @@ capture {
   left: 24px;
   color: #fff;
   z-index: 10;
-  &.empty{
-    color: $gray; 
+  color: $gray;
+
+  &.on{
+    color: #fff;
   }
+
+
   h3{
     font-size: 5rem;
   }
@@ -137,6 +148,12 @@ capture {
 
       &:nth-child(4) {
         background: $red;
+        &:hover{
+          background-color:darken( $red, 3% );
+        }
+        &:active{
+          background-color:darken( $red, 8% );
+        }
         &:after{
           content: '';
           position: absolute;
@@ -145,6 +162,13 @@ capture {
           height: 5px;
           width: 100%;
           left:0;
+          
+        }
+        &.disabled {
+          background-color: darken( $ready, 10% );
+           &:after{
+            background-color:darken( $ready, 16% );
+          }
         }
       }
 
@@ -185,7 +209,6 @@ capture {
         margin: 0px 8px 0px 0;
         font-weight: 100;
         font-size: 3rem;
-        cursor: pointer;
       }
       canvas, img {
         @extend .center-child;
@@ -197,6 +220,29 @@ capture {
     }
 
 }
+.fadeout.ng-hide-add,
+.fadeout.ng-hide-remove {
+  -webkit-transition:0.1s linear opacity;
+  transition:0.1s linear opacity;
+
+  /* remember to add this */
+  display:block!important;
+  opacity:1;
+}
+.fadeout.ng-hide {
+  opacity:0;
+}
+
+.flash-shield {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background: #fff;
+  z-index: 20;
+}
+
 .capture-list-item-button{
   display: flex;
   flex-flow: column;

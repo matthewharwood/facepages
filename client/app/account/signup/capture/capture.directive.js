@@ -66,10 +66,18 @@ angular.module('facepagesApp')
             }
           }
         };
+        
+        scope.hovered = {
+          'imgA': false,
+          'imgB': false 
+        };
 
+        scope.editorHover = function(type, bool){
+          scope.hovered[type] = bool;
+        };
 
         scope.takePic = function (id, $event) {
-
+          scope.disable = true;
           $interval(scope.callAtInterval, 1000, 3);
           $timeout(function () {
 
@@ -83,16 +91,22 @@ angular.module('facepagesApp')
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
             scope.user[scope.selected] = canvas.toDataURL();
 
+            scope.flash = true;
             $http.patch('/api/users/me', scope.user).success(function (user) {
               scope.user = user;
-              scope.setLabels($event)
+              scope.setLabels($event);
+              $timeout(function () {
+                scope.flash = false;
+              },300);
             });
 
             for (var i = 0; i < scope.countdown.length; i++) {
               scope.countdown[i].power = false;
               scope.counted--;
             }
-
+            
+            scope.disable = false;
+            
           }, 4000);
           
         };
