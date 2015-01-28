@@ -1,0 +1,46 @@
+
+.feed-container {
+  height: 100%;
+  width: 100%;
+  @extend .group;
+}
+.col-left-feed {
+  width: 20%;
+  padding: 1em;
+  height: 100%;
+  position: fixed;
+  @extend .fill;
+}
+
+.col-right-feed {
+  width: 80%;
+  padding: 1em;
+  background: #f7f7f7;
+  margin-left: 20%;
+  @extend .fill;
+}
+.inner-col-right {
+  display: flex;
+  flex-flow: wrap row;
+}
+.col-right-item {
+  position: relative;
+  width: 20%;
+  padding: 8px 0 8px 8px;
+  overflow:hidden;
+
+}
+.item-viewport{
+  width: 100%;
+  @extend .center-flex;
+  overflow: hidden;
+}
+.emptyimg {
+  width: auto;
+  min-width: 100%;
+  height: 100%;
+  position: absolute;
+  background: gray;
+  filter: grayscale(100%);
+  @extend .center-child;
+}
