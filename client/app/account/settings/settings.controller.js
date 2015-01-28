@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('facepagesApp')
-  .controller('SettingsCtrl', function ($scope, User, Auth, $http) {
+  .controller('SettingsCtrl', function ($scope, User, Auth, $http, socket) {
     $scope.errors = {};
 
     $http.get('/api/users/me').success(function (user) {
@@ -68,4 +68,5 @@ angular.module('facepagesApp')
           });
       }
     };
+
   });

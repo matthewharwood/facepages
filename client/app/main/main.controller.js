@@ -6,22 +6,12 @@ angular.module('facepagesApp')
 
     $http.get('/api/users').success(function(users) {
       $scope.users = users;
-      socket.syncUpdates('users', $scope.users);
     });
+    socket.socket.on('user:save', function(data){
+      console.log('caught socket emit');
+      $http.get('/api/users').success(function(users) {
+        $scope.users = users;
+      });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
     });
   });
