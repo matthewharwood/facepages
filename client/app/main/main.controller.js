@@ -1,14 +1,22 @@
 'use strict';
 
 angular.module('facepagesApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, $timeout) {
     $scope.users = [];
 
     $http.get('/api/users').success(function(users) {
       $scope.users = users;
+      $timeout(function(){
+        var firstImg = $('.emptyimg');
+        $scope.imgHeight = {
+          height: (firstImg.width()) + 'px',
+        };
+      },1000)
+      
       socket.syncUpdates('users', $scope.users);
     });
-
+    
+    
     $scope.addThing = function() {
       if($scope.newThing === '') {
         return;
